@@ -7,24 +7,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Testes da Calculadora de Frete")
 class CalculadoraFreteTest {
-    @DisplayName("Deve calcular o frete corretamente para diferentes pesos e tipos de frete")
+    @DisplayName("Deve calcular o frete corretamente")
     //Define valores recebidos
     @ParameterizedTest(name = "peso={0}, expressa={1}, esperado={2}")
     // Dados fornecidos
     @CsvSource({
             // peso, expressa, esperado
+            "5.00, true,  27.00",
             "0.01, false,  8.02",
             "1.00, false, 10.00",
             "5.00, false, 18.00",
-            "1.00, true,  15.00",
-            "5.00, true,  27.00"
+            "1.00, true,  15.00"
     })
     void calcularFreteCorreto(double peso, boolean expressa, double esperado) {
-        double obtido = CalculadoraFrete.calcular(peso, expressa);
+        double resultado = CalculadoraFrete.calcular(peso, expressa);
 
         // Verifica se o valor obtido é igual ao valor esperado
-        assertEquals(esperado, obtido, 0.001);
+        assertEquals(esperado, resultado, 0.001);
     }
 
     @DisplayName("Deve lançar exceção para peso inválido")
