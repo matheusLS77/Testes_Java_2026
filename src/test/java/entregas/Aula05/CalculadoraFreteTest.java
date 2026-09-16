@@ -30,7 +30,7 @@ class CalculadoraFreteTest {
 
     @DisplayName("Deve lançar exceção para peso inválido")
     @ParameterizedTest(name = "peso inválido: {0}")
-    // Lista de pesos inválidos para teste
+    // Lista de pesos inválidos
     @ValueSource(doubles = {0.0, -0.01, -10.0})
     void pesoInvalidoDeveLancarExcecao(double peso) {
         // Verifica se a exceção é lançada para pesos inválidos
