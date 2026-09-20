@@ -1,0 +1,6 @@
+**A) 20 números diferentes no mesmo método = @ValueSource porque os testes usam apenas um valor por execução**
+
+**B) idade + acompanhado + resultadoEsperado = CsvSource porque cada teste precisa receber vários valores na mesma execução**
+
+**C) objetos ou combinações mais complexas = @MethodSource É mais adequado para objetos, null e combinações mais complexas**
+
