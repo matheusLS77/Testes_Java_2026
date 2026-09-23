@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,15 +20,20 @@ public class PagamentoTest {
     @Tag("pix")
     class Pix {
 
-        @Test
         @DisplayName("Deve cobrar valor sem taxa")
-        void naoDeveCobrarTaxa() {
-            double valor = 1;
+        @ParameterizedTest(name = "valor R$ {0}, esperado: R$ {1}")
+        @CsvSource({
+                "1, 1",
+                "2, 2",
+                "3, 3",
+                "4, 4",
+                "5, 5"
+        })
+        void naoDeveCobrarTaxa(double valor, double esperado) {
             PagamentoPix pix = new PagamentoPix(valor);
+            double resultado = pix.calcularTaxa(valor);
 
-            double pagamentoObtido = pix.calcularTaxa(valor);
-
-            assertEquals(1, pagamentoObtido, 0.001);
+            assertEquals(esperado, resultado);
         }
 
         @Test
