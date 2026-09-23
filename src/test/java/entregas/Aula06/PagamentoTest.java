@@ -53,7 +53,7 @@ public class PagamentoTest {
 
             double pagamentoObtido = cartao.calcularTaxa(valor);
 
-            assertEquals(125, pagamentoObtido, 0.001);
+            assertEquals(102.5, pagamentoObtido, 0.001);
         }
 
         @Test
@@ -83,7 +83,7 @@ public class PagamentoTest {
 
             assertAll(
                     () -> assertEquals(1, pix.calcularTaxa(valor)),
-                    () -> assertEquals(1.25, cartao.calcularTaxa(valor))
+                    () -> assertEquals(1.025, cartao.calcularTaxa(valor))
             );
         }
 
