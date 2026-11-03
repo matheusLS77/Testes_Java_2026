@@ -9,7 +9,7 @@ class ProdutoTest {
 
     @Test
     void calcularValorTotalDeveMultiplicarPrecoPelaQuantidade() {
-        Produto produto = new Produto("Produto", 100.0, 2);
+        Produto produto = new Produto("ProdutoTest", 100.0, 2);
 
         double obtido = produto.calcularValorEmEstoque();
 
@@ -18,7 +18,7 @@ class ProdutoTest {
 
     @Test
     void temEstoqueDeveRetornarTrueComQuantidadePositiva() {
-        Produto produto = new Produto("Produto", 40.0, 11);
+        Produto produto = new Produto("ProdutoTest", 40.0, 11);
 
         boolean obtido = produto.temEstoque();
 
@@ -27,7 +27,7 @@ class ProdutoTest {
 
     @Test
     void temEstoqueDeveRetornarFalseComQuantidadeIgualAZero() {
-        Produto produto = new Produto("Produto", 40.0, 0);
+        Produto produto = new Produto("ProdutoTest", 40.0, 0);
 
         boolean obtido = produto.temEstoque();
 
@@ -37,7 +37,7 @@ class ProdutoTest {
     @Test
     void precoZeroDeveLancarExcecao() {
         IllegalArgumentException excecao = assertThrows(
-                IllegalArgumentException.class, () -> new Produto("Produto", 0.0, 51));
+                IllegalArgumentException.class, () -> new Produto("ProdutoTest", 0.0, 51));
 
         assertEquals("O preço deve ser maior que zero.", excecao.getMessage());
     }
@@ -45,7 +45,7 @@ class ProdutoTest {
     @Test
     void precoNegativoDeveLancarExcecao() {
         IllegalArgumentException excecao = assertThrows(
-                IllegalArgumentException.class, () -> new Produto("Produto", -2.0, 2));
+                IllegalArgumentException.class, () -> new Produto("ProdutoTest", -2.0, 2));
 
         assertEquals("O preço deve ser maior que zero.", excecao.getMessage());
     }
@@ -53,7 +53,7 @@ class ProdutoTest {
     @Test
     void estoqueNegativoDeveLancarExcecao() {
         IllegalArgumentException excecao = assertThrows(
-                IllegalArgumentException.class, () -> new Produto("Produto", 120.0, -1));
+                IllegalArgumentException.class, () -> new Produto("ProdutoTest", 120.0, -1));
 
         assertEquals("O estoque não pode ser negativo.", excecao.getMessage());
     }
